@@ -1,0 +1,15 @@
+.rounded-input-phone {
+    display: grid;
+    margin-top: 1rem;
+    grid-template-columns: 1fr; /* 1 columna */
+    grid-gap: 1rem; /* Espacio entre elementos */
+    width: 100%; /* Toma el 100% de la pantalla */
+    align-items: center;
+    justify-items: center; 
+    border-radius: 10px;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    width: 25%; /* Toman todo el ancho del contenedor */
+    box-sizing: border-box;
+    resize: none;
+  }

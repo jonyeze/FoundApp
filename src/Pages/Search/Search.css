@@ -1,0 +1,14 @@
+.text-center{
+  margin-bottom: 1rem;
+}
+
+.rounded-input {
+  border-radius: 10px;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  width: 25%; /* Cambiado a 100% para tomar todo el ancho disponible */
+  box-sizing: border-box; /* Evita que el padding afecte el ancho total */
+}
+
+
+
