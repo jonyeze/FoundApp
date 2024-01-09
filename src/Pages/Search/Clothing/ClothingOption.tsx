@@ -26,8 +26,7 @@ const ClothingOption: React.FC<ClothingOptionProps> = ({
   };
   return (
   
-      <textarea
-       
+      <textarea     
         value={clothingValue}
         onChange={handleTextareaChange}
         className="rounded-input-clothing"

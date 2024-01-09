@@ -1,0 +1,7 @@
+.default-input {
+    border-radius: 10px;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    width: 25%; /* Toman todo el ancho del contenedor */
+    box-sizing: border-box;
+}

@@ -1,5 +1,6 @@
 import React from "react";
-import './DniOption.css';
+import DefaultInput from "../../../Components/DefaultInput/DefaultInput";
+import "./DniOption.css";
 
 interface DniOptionProps {
   inputValue: string;
@@ -14,38 +15,22 @@ const DniOption: React.FC<DniOptionProps> = ({
   handleChange,
   handleNameChange,
 }) => {
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // Obtén el valor actual del input y elimina cualquier carácter que no sea un número
-    let newValue = event.target.value.replace(/\D/g, "");
-
-    // Limita la longitud a un mínimo de 7 y un máximo de 10 caracteres
-    newValue = newValue.slice(0, 10);
-
-    // Llama a la función handleChange con el nuevo valor
-    handleChange({
-      ...event,
-      target: {
-        ...event.target,
-        value: newValue,
-      },
-    });
-  };
-
   return (
     <div className="input-container">
-      <input
-        type="text"
-        value={inputValue}
-        onChange={handleInputChange}
-        className="rounded-input-dni"
-        placeholder="Ingrese el número de DNI"
+      <DefaultInput
+        inputValue={inputValue}
+        handleChange={handleChange}
+        idName={"dni_input"}
+        placeholder={"Ingrese el número de DNI"}
+        inputType={"number"}
       />
-      <input
-        type="text"
-        value={nameValue}
-        onChange={handleNameChange}
-        className="rounded-input-dni"
-        placeholder="Nombre y apellido"
+
+      <DefaultInput
+        inputValue={nameValue}
+        handleChange={handleNameChange}
+        idName={"name_input"}
+        placeholder={"Nombre y apellido"}
+        inputType={"text"}
       />
     </div>
   );

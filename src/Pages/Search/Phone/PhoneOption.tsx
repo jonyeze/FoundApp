@@ -24,7 +24,6 @@ const PhoneOption: React.FC<PhoneOptionProps> = ({
     });
   };
   return (
-   
       <textarea
         value={phoneValue}
         onChange={handleTextareaChange}
