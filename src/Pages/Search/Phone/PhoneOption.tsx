@@ -1,5 +1,5 @@
-import React from 'react';
-import './PhoneOption.css';
+import React from "react";
+import DefaultTextarea from "../../../Components/DefaultTextarea/DefaultTextarea";
 
 interface PhoneOptionProps {
   phoneValue: string;
@@ -7,12 +7,14 @@ interface PhoneOptionProps {
 }
 
 const PhoneOption: React.FC<PhoneOptionProps> = ({
-   phoneValue, 
-   handlePhoneChange 
-  }) => {
-    const handleTextareaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-      let newValue = event.target.value.toString();
-      // Limita la longitud a un mínimo de 0 y un máximo de 200 caracteres
+  phoneValue,
+  handlePhoneChange,
+}) => {
+  const handleTextareaChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    let newValue = event.target.value.toString();
+    // Limita la longitud a un mínimo de 0 y un máximo de 200 caracteres
     newValue = newValue.slice(0, 200);
 
     handlePhoneChange({
@@ -24,13 +26,11 @@ const PhoneOption: React.FC<PhoneOptionProps> = ({
     });
   };
   return (
-      <textarea
-        value={phoneValue}
-        onChange={handleTextareaChange}
-        className="rounded-input-phone"
-        placeholder="Ingrese el número de DNI"
-      />
-    
+    <DefaultTextarea
+      value={phoneValue}
+      handleChange={handleTextareaChange}
+      placeholder="Ingrese el número de DNI"
+    />
   );
 };
 
