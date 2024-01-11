@@ -1,5 +1,5 @@
 import React from 'react';
-import './DinerOption.css';
+import DefaultTextarea from '../../../Components/DefaultTextarea/DefaultTextarea';
 
 interface DinerOptionProps {
   dinerValue: string;
@@ -26,10 +26,9 @@ const DinerOption: React.FC<DinerOptionProps> = ({
   };
 
   return (
-    <textarea
+    <DefaultTextarea
       value={dinerValue}
-      onChange={handleTextareaChange}
-      className="rounded-input-dni"
+      handleChange={handleTextareaChange}
       placeholder="Describa cuanto dinero extravio y en que lugar"
     />
   );
