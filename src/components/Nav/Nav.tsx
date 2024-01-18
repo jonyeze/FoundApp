@@ -32,7 +32,7 @@ const Nav: React.FC = () => {
       <div className="logo">Logo</div>
       <div className={`menu ${showMenu ? 'active' : ''}`}>
         <a href="/" onClick={closeMenu} className='nav-link'>Home</a>
-        <a href="#" onClick={closeMenu} className='nav-link'>About</a>
+        <a href="/About" onClick={closeMenu} className='nav-link'>About</a>
       </div>
       <div className="menu-toggle" onClick={toggleMenu}>
         <div className={`bar ${showMenu ? 'open' : ''}`} />

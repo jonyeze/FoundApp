@@ -1,0 +1,58 @@
+.container {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 1rem;
+  background-color: #ffffff;
+}
+
+.section-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333333;
+  padding-top: 1rem;
+}
+
+.common-text {
+  font-size: 1.5rem;
+  color: #555555;
+  margin-bottom: 10px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.text-orange {
+  color: #ff9800;
+  }
+
+.text-purple {
+  color: #800080; /* Color púrpura */
+}
+
+.functionality-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.bordertx1 {
+  border: 1.5px solid #d3d3d3;
+  border-radius: 20px; /* Ajusta el valor según la curvatura que desees */
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.bordertx2{
+  border: 1.5px solid #d3d3d3;
+  border-radius: 20px; /* Ajusta el valor según la curvatura que desees */
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.functionality-item {
+  width: 48%; /* Ajusta el ancho según sea necesario */
+}
+.color-text{
+  color: rgb(74, 74, 196);
+}
