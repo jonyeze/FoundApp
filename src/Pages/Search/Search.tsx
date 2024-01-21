@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Search.css";
 
 import DniOption from "./Dni/DniOption";
-import DinerOption from "./Diner/DinerOption";
+import DinerOption from "./Cash/CashOption";
 import ClothingOption from "./Clothing/ClothingOption";
 import PhoneOption from "./Phone/PhoneOption";
 import Dropdown from "../../Components/Dropdown/Dropdown";
