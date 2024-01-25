@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Nav.css';
+import Logo from '../Img/Fobj.png';
 
 const Nav: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -29,7 +30,7 @@ const Nav: React.FC = () => {
 
   return (
     <div className="navbar" ref={navRef}>
-      <div className="logo">Logo</div>
+       <img src={Logo} alt="logo" className='Logo' />
       <div className={`menu ${showMenu ? 'active' : ''}`}>
         <a href="/" onClick={closeMenu} className='nav-link'>Home</a>
         <a href="/About" onClick={closeMenu} className='nav-link'>About</a>
