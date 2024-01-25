@@ -30,7 +30,7 @@ const Nav: React.FC = () => {
 
   return (
     <div className="navbar" ref={navRef}>
-       <img src={Logo} alt="logo" className='Logo' />
+       <img src={Logo} alt="logo" className='logo' />
       <div className={`menu ${showMenu ? 'active' : ''}`}>
         <a href="/" onClick={closeMenu} className='nav-link'>Home</a>
         <a href="/About" onClick={closeMenu} className='nav-link'>About</a>
