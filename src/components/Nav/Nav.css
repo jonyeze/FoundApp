@@ -3,22 +3,22 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #001F54;
+  background-color: #001f54;
   color: white;
-  border-bottom-left-radius: 0.6rem;
-  border-bottom-right-radius: 0.6rem;
+  height: 70px;
 }
 
 .logo {
   background-size: cover;
   width: 10px;
   height: 10px;
+  background-color: none;
 }
 
 .menu {
   display: flex;
   gap: 20px;
-  background-color: #001F54;
+  background-color: #001f54;
 }
 
 .menu a {
@@ -38,8 +38,8 @@
   background-color: white;
   margin: 3px 0;
 }
-.nav-link{
-  background-color:#001F54;
+.nav-link {
+  background-color: #001f54;
 }
 
 @media (max-width: 768px) {
@@ -49,17 +49,20 @@
     position: absolute;
     top: 60px;
     right: 20px;
-    background-color: #001F54;
+    background-color: #001f54;
     padding: 10px;
-    border-radius: 5%;
   }
 
   .menu.active {
     display: flex;
+    width: 100%;
+    right: 0;
+    align-items: center;
+    top: 70px;
   }
 
   .menu-toggle {
     display: flex;
-    background-color: #001F54;
+    background-color: #001f54;
   }
 }
