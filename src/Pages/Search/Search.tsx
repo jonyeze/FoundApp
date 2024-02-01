@@ -6,6 +6,7 @@ import DinerOption from "./Cash/CashOption";
 import ClothingOption from "./Clothing/ClothingOption";
 import PhoneOption from "./Phone/PhoneOption";
 import Dropdown from "../../Components/Dropdown/Dropdown";
+import CardComponent from "../../Components/Cards";
 
 const Search: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>("phone");
@@ -42,6 +43,8 @@ const Search: React.FC = () => {
     setPhoneValue(newValue);
   };
 
+
+
   return (
     <div className="container">
       <h1 className="text-center">Agrega datos del objeto que perdiste</h1>
@@ -75,7 +78,11 @@ const Search: React.FC = () => {
           handlePhoneChange={handlePhoneChange}
         />
       )}
+      <div className="cards-container">
+      <CardComponent />
+      </div>
     </div>
+
   );
 };
 
