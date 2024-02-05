@@ -1,5 +1,16 @@
+.search-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40vh; /* Opcional: Esto centra el contenido verticalmente en la pantalla */
+}
+
 .text-center{
   margin-bottom: 1rem;
+  font-family: 'Roboto Serif', serif;
+  text-decoration: underline;
+  margin-bottom: 2rem;
 }
 
 .rounded-input {

@@ -8,7 +8,7 @@ import PhoneOption from "./Phone/PhoneOption";
 import Dropdown from "../../Components/Dropdown/Dropdown";
 
 const Search: React.FC = () => {
-  const [selectedOption, setSelectedOption] = useState<string>("phone");
+  const [selectedOption, setSelectedOption] = useState<string>("");
   const [inputValue, setInputValue] = useState<string>("");
   const [nameValue, setNameValue] = useState<string>("");
   const [dinerValue, setDinerValue] = useState<string>("");
@@ -37,13 +37,14 @@ const Search: React.FC = () => {
     const newValue = event.target.value.slice(0, 200);
     setClothingValue(newValue);
   };
-  const handlePhoneChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handlePhoneChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value.slice(0, 200);
     setPhoneValue(newValue);
   };
+  
 
   return (
-    <div className="container">
+    <div className="search-container">
       <h1 className="text-center">Agrega datos del objeto que perdiste</h1>
       <Dropdown
         selectedOption={selectedOption}

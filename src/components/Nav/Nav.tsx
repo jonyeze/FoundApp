@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Nav.css';
-import Logo from '../Img/Fobj.png';
+import Logo from '../../Assets/Img/Fobj.png';
 
 const Nav: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
