@@ -79,7 +79,7 @@ const Search: React.FC = () => {
           handlePhoneChange={handlePhoneChange}
         />
       )}
-      <div className="cards-container">
+      <div className="cards-container-search">
       <CardComponent />
       </div>
     </div>

@@ -1,9 +1,9 @@
-.search-container{
+.search-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 40vh; /* Opcional: Esto centra el contenido verticalmente en la pantalla */
+  min-height: 40vh; /* Cambiado de altura fija a altura mínima */
 }
 
 .text-center{
@@ -21,11 +21,13 @@
   box-sizing: border-box; /* Evita que el padding afecte el ancho total */
 }
 
-.cards-container {
+.cards-container-search {
   width: 100%;
   margin-top: 20px;
   display: grid;
+  justify-content: center;
 }
+
 
 
 

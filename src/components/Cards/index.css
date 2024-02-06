@@ -1,9 +1,8 @@
 .card-main {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
+  margin: auto; 
 }
 .card-container {
   width: 30rem;
@@ -16,6 +15,7 @@
   overflow: hidden;
   display: grid;
   grid-template-rows: 1fr 1fr;
+  margin: 0 2rem;
 }
 
 .card-data-container {

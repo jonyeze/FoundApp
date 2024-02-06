@@ -13,13 +13,13 @@ export const data = [
     color: "Black",
     type: "phone",
   },
-  // {
-  //   model: "iPhone X",
-  //   address: "Prevere Antoni Lliteres 1",
-  //   date: "15/11/23",
-  //   color: "Silver",
-  //   type: "phone",
-  // },
+   {
+    model: "iPhone X",
+    address: "Prevere Antoni Lliteres 1",
+    date: "15/11/23",
+    color: "Silver",
+    type: "phone",
+   },
   // {
   //   model: "Google Pixel 3",
   //   address: "Estrada 1171, Villa Maipu",

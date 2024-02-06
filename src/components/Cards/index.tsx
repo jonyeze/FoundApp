@@ -2,7 +2,7 @@ import React from "react";
 import { data } from "../../helpers/lostPhones";
 import MapComponent from "../Map";
 import "./index.css";
-import image from "../Img/Fobj.png";
+import image from "../../Assets/Img/Fobj.png";
 
 interface PhoneData {
   model: string;
