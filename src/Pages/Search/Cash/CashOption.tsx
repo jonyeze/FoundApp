@@ -29,7 +29,7 @@ const DinerOption: React.FC<DinerOptionProps> = ({
     <DefaultTextarea
       value={dinerValue}
       handleChange={handleTextareaChange}
-      placeholder="Describa cuanto dinero extravio y en que lugar"
+      placeholder="Cantidad de dinero extraviada"
     />
   );
 };

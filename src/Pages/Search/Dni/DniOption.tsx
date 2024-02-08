@@ -16,22 +16,24 @@ const DniOption: React.FC<DniOptionProps> = ({
   handleNameChange,
 }) => {
   return (
-    <div className="input-container">
-      <DefaultInput
-        inputValue={inputValue}
-        handleChange={handleChange}
-        idName={"dni_input"}
-        placeholder={"Ingrese el número de DNI"}
-        inputType={"number"}
-      />
+    <div className="container">
+      <div className="input-container">
+        <DefaultInput
+          inputValue={inputValue}
+          handleChange={handleChange}
+          idName={"dni_input"}
+          placeholder={"Ingrese el número de DNI"}
+          inputType={"number"}
+        />
 
-      <DefaultInput
-        inputValue={nameValue}
-        handleChange={handleNameChange}
-        idName={"name_input"}
-        placeholder={"Nombre y apellido"}
-        inputType={"text"}
-      />
+        <DefaultInput
+          inputValue={nameValue}
+          handleChange={handleNameChange}
+          idName={"name_input"}
+          placeholder={"Nombre completo"}
+          inputType={"text"}
+        />
+      </div>
     </div>
   );
 };
