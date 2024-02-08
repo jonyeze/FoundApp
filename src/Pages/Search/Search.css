@@ -6,11 +6,10 @@
   min-height: 40vh; /* Cambiado de altura fija a altura mínima */
 }
 
-.text-center{
+.text-center {
   margin-bottom: 1rem;
-  font-family: 'Roboto Serif', serif;
-  text-decoration: underline;
   margin-bottom: 2rem;
+  color: #ffff;
 }
 
 .rounded-input {
@@ -19,6 +18,8 @@
   border: 1px solid #ccc;
   width: 25%; /* Cambiado a 100% para tomar todo el ancho disponible */
   box-sizing: border-box; /* Evita que el padding afecte el ancho total */
+  color: #ffff;
+  outline: none;
 }
 
 .cards-container-search {
@@ -26,8 +27,5 @@
   margin-top: 20px;
   display: grid;
   justify-content: center;
+  outline: none;
 }
-
-
-
-

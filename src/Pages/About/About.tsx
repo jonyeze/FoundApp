@@ -8,7 +8,7 @@ const About: React.FC = () => {
         <h2 className="about-section-title">Nuestra Misión</h2>
         <p className="about-common-text">
           Enfrentarse a la pérdida de objetos personales puede ser una
-          experiencia desafiante y estresante. En <span className="about-color-text">[Nombre de tu Sitio]</span>,
+          experiencia desafiante y estresante. En <span className="about-color-text">FOBJ</span>,
           entendemos la importancia de esos objetos en tu vida diaria. Nuestra
           misión es ofrecer apoyo a aquellos que han perdido sus pertenencias en
           la calle, ya sea un teléfono celular, una billetera u otros objetos
@@ -36,7 +36,7 @@ const About: React.FC = () => {
       <div>
         <h2 className="about-section-title">Únete a Nosotros</h2>
         <p className="about-common-text">
-          En <span className="about-color-text">[Nombre de tu Sitio]</span>, creemos en la fuerza de la comunidad para
+          En <span className="about-color-text">FOBJ</span>, creemos en la fuerza de la comunidad para
           hacer una diferencia. Únete a nosotros y forma parte de esta red
           solidaria. Juntos, podemos hacer que la experiencia de perder un
           objeto sea un poco menos abrumadora.

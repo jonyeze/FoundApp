@@ -14,7 +14,7 @@ const ClothingOption: React.FC<ClothingOptionProps> = ({
     <DefaultTextarea
       value={clothingValue}
       handleChange={handleClothingChange}
-      placeholder={"Describa que prenda extravio"}
+      placeholder={"Tipo de prenda"}
     />
   );
 };

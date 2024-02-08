@@ -1,28 +1,28 @@
 .card-main {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
-  margin: auto; 
+  margin: auto;
+  gap: 2rem;
 }
 .card-container {
   width: 30rem;
   height: 20rem;
   border-radius: 1.5rem;
-  border: 1px solid red; 
-  background-color: white;
+  border: 1px solid white;
+  background-color: transparent;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
   display: grid;
   grid-template-rows: 1fr 1fr;
-  margin: 0 2rem;
 }
 
 .card-data-container {
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-    justify-content: space-around;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  justify-content: space-around;
 }
 
 .card-text {
@@ -30,23 +30,25 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #ffff;
 }
 
 .img-map-container {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  background-color: transparent;
 }
 
 .map-container {
   width: 100%;
   height: fit-content;
+  background-color: transparent;
 }
 
 .image-container {
-  background-color: red;
-    width: 30%;
+  width: 30%;
 }
 
 .images {
-    width: 30%;
+  width: 30%;
 }

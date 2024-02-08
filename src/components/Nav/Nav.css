@@ -12,6 +12,7 @@
   background-size: cover;
   width: 150px;
   background-color: none;
+  cursor: pointer;
 }
 
 .menu {
@@ -58,6 +59,10 @@
     right: 0;
     align-items: center;
     top: 70px;
+    border: 1px white solid;
+    border-top: transparent;
+    border-right: transparent;
+    border-left: transparent;
   }
 
   .menu-toggle {

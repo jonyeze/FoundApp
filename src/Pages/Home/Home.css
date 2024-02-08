@@ -8,24 +8,25 @@
 .home-content {
   flex: 1;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  margin-top: 10rem;
   align-items: center;
 }
 
 .home-text-center {
-  font-family: 'Roboto Serif', serif;
-  color: #020030;
-  font-size: 35px;
+  color: #ffff;
   text-align: center;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
 }
-.home-title{
-  padding-bottom: 5rem ;
+.home-title {
+  padding-bottom: 2rem;
+  font-size: 30px;
 }
 
 .home-grid-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .home-button-column {
@@ -36,8 +37,8 @@
 }
 
 .home-button {
-  background-color: #034078;
-  color: #fff;
+  background-color: #ffff;
+  color: #001f54;
   width: 12rem;
   height: 4.5rem;
   padding: 0 1rem;
@@ -54,20 +55,31 @@
   transform: translateZ(10px);
 }
 
-.home-img-container {
-  flex: 1;
+.footer {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  padding: 10px;
+  background-color: #477ccf;
 }
 
-.home-imgHome {
-  height: 65vh;
-  max-width: 100%;
+.footer-span {
+  background-color: transparent;
+  color: #ffff;
+  font-size: 12px;
+  margin: 0 15px 0 15px;
 }
 
 @media screen and (max-width: 480px) {
   .button {
     margin: 0;
+  }
+  .home-content {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 5rem;
   }
 }
