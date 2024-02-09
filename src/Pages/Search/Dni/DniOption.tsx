@@ -4,9 +4,9 @@ import "./DniOption.css";
 
 interface DniOptionProps {
   inputValue: string;
-  nameValue: string; // Agrega el valor del nombre
+  nameValue: string;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void; // Agrega la función de manejo del cambio del nombre
+  handleNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void; 
 }
 
 const DniOption: React.FC<DniOptionProps> = ({

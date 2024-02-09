@@ -17,7 +17,7 @@ const Nav: React.FC = () => {
   };
 
   const handleRedirectHome = () => {
-    navigator("/");
+    navigator("/home");
   };
 
   useEffect(() => {
@@ -43,9 +43,6 @@ const Nav: React.FC = () => {
         onClick={handleRedirectHome}
       />
       <div className={`menu ${showMenu ? "active" : ""}`}>
-        <a href="/" onClick={closeMenu} className="nav-link">
-          Home
-        </a>
         <a href="/About" onClick={closeMenu} className="nav-link">
           Nosotros
         </a>
