@@ -18,6 +18,8 @@ const DefaultInput: React.FC<DefaultInputProps> = ({
         } else if (inputType === 'number') {
           newValue = event.target.value.replace(/\D/g, "");
           newValue = newValue.slice(0, 10);
+        } else if (inputType === 'password') {
+          newValue = event.target.value;
         }
       
         handleChange({

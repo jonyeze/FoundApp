@@ -3,4 +3,5 @@ export interface DefaultInputProps {
     handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
     idName?: string;
-    inputType: "text" | "number";}
+  inputType: "text" | "number" | "password";
+}
