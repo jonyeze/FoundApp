@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./Login.css";
-import DefaultInput from "../../Components/DefaultInput/DefaultInput";
+import DefaultInput from "../../components/DefaultInput/DefaultInput";
 import backImage from "../../Assets/Img/Found&Objects.png";
 import logoImage from "../../Assets/Img/Fobj.png";
 import { useNavigate } from "react-router-dom";
+
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");

@@ -1,5 +1,5 @@
 import React from "react";
-import DefaultTextarea from "../../../Components/DefaultTextarea/DefaultTextarea";
+import DefaultTextarea from "../../../components/DefaultTextarea/DefaultTextarea";
 
 interface ClothingOptionProps {
   clothingValue: string;
