@@ -1,5 +1,5 @@
 import React from "react";
-import DefaultInput from "../../../Components/DefaultInput/DefaultInput";
+import DefaultInput from "../../../components/DefaultInput/DefaultInput";
 
 interface PhoneOptionProps {
   phoneValue: string;

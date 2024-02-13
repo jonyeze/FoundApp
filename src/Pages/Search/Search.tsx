@@ -5,8 +5,8 @@ import DniOption from "./Dni/DniOption";
 import DinerOption from "./Cash/CashOption";
 import ClothingOption from "./Clothing/ClothingOption";
 import PhoneOption from "./Phone/PhoneOption";
-import Dropdown from "../../Components/Dropdown/Dropdown";
-import CardComponent from "../../Components/Cards";
+import Dropdown from "../../components/Dropdown/Dropdown";
+import CardComponent from "../../components/Cards";
 
 const Search: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>("");
