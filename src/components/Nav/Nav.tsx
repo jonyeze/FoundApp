@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "./Nav.css";
 import Logo from "../../Assets/Img/Fobj.png";
 import { useNavigate } from "react-router-dom";
+import LogoutButton from "../logoutButton";
 
 const Nav: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -46,6 +47,7 @@ const Nav: React.FC = () => {
         <a href="/About" onClick={closeMenu} className="nav-link">
           Nosotros
         </a>
+        <LogoutButton />
       </div>
       <div className="menu-toggle" onClick={toggleMenu}>
         <div className={`bar ${showMenu ? "open" : ""}`} />
