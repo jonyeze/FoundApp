@@ -1,0 +1,16 @@
+.user-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid white;
+  margin-left: 10px;
+}
+
+.user-info-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
