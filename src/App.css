@@ -8,7 +8,9 @@
   font-family: "Montserrat", sans-serif;
 }
 
-
+a {
+  text-decoration: none;
+}
 
 /*Colors
 celeste: #1282A2*/

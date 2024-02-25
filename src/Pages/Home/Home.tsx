@@ -11,7 +11,7 @@ const Home: React.FC = () => {
           <div className="home-grid-container">
             <div className="home-button-column">
               <Link to="/search">
-                <button className="home-button">Buscar</button>
+                <button className="home-button">buscar</button>
               </Link>
             </div>
           </div>

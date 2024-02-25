@@ -3,6 +3,7 @@ import "./Nav.css";
 import Logo from "../../Assets/Img/Fobj.png";
 import { useNavigate } from "react-router-dom";
 import LogoutButton from "../logoutButton";
+import User from "../User";
 
 const Nav: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -44,6 +45,7 @@ const Nav: React.FC = () => {
         onClick={handleRedirectHome}
       />
       <div className={`menu ${showMenu ? "active" : ""}`}>
+      <User />
         <a href="/About" onClick={closeMenu} className="nav-link">
           Nosotros
         </a>
