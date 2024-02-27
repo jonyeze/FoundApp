@@ -110,7 +110,7 @@ const Login: React.FC = () => {
 
   return (
     <div className="login-container">
-      <div>
+      <div className="image-container">
         <img alt="" src={backImage} />
       </div>
       <div className="login-form">
