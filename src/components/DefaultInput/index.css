@@ -9,3 +9,9 @@
   font-size: 16px;
   margin-bottom: 3px;
 }
+
+.errormsg {
+  color: red;
+  font-size: 12px;
+  margin-top: 2px;
+}

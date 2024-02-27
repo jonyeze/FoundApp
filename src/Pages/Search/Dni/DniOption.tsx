@@ -6,7 +6,7 @@ interface DniOptionProps {
   inputValue: string;
   nameValue: string;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void; 
+  handleNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const DniOption: React.FC<DniOptionProps> = ({
@@ -17,7 +17,7 @@ const DniOption: React.FC<DniOptionProps> = ({
 }) => {
   return (
     <div className="container">
-      <div className="input-container">
+      <div className="text-container">
         <DefaultInput
           inputValue={inputValue}
           handleChange={handleChange}

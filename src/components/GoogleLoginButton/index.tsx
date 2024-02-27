@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import GoogleLogo from "../svg/googleLogo";
-import './googleButton.css'
+import GoogleLogo from "../../Assets/svg/googleLogo";
+import "./googleButton.css";
 import firebaseConfig from "../../firebase/firebaseConfig";
 
 const GoogleLoginButton: React.FC = () => {
@@ -15,7 +15,7 @@ const GoogleLoginButton: React.FC = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;
-        navigator('/home')
+        navigator("/home");
         console.log("Inicio de sesión exitoso:", user);
       })
       .catch((error) => {
@@ -23,7 +23,12 @@ const GoogleLoginButton: React.FC = () => {
       });
   }
 
-  return <button onClick={signInWithGoogle} className="google-button"> <GoogleLogo /> Iniciar sesión con Google</button>;
+  return (
+    <button onClick={signInWithGoogle} className="google-button">
+      {" "}
+      <GoogleLogo /> Iniciar sesión con Google
+    </button>
+  );
 };
 
 export default GoogleLoginButton;

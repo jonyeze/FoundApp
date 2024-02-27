@@ -13,7 +13,7 @@ import {
 } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import firebaseConfig from "../../firebase/firebaseConfig";
-import EmailLogo from "../../components/svg/emailLogo";
+import EmailLogo from "../../Assets/svg/emailLogo";
 
 const Login: React.FC = () => {
   const [showEmailFields, setShowEmailFields] = useState(false);
@@ -22,6 +22,7 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [sendEmail, setSendEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errormsg, setErrorMsg] = useState("");
   const [confirmPassword, setHandleConfirmPassword] = useState("");
   const navigator = useNavigate();
   const app = initializeApp(firebaseConfig);
@@ -35,17 +36,20 @@ const Login: React.FC = () => {
     setShowEmailFields(true);
     setShowRegistrationFields(false);
     setPasswordReset(false);
+    setErrorMsg("");
   };
 
   const handleRegistration = () => {
     setShowRegistrationFields(true);
     setShowEmailFields(false);
+    setErrorMsg("");
   };
 
   const handleBack = () => {
     setShowEmailFields(false);
     setShowRegistrationFields(false);
     setPasswordReset(false);
+    setErrorMsg("");
   };
 
   const hanldePasswordReset = () => {
@@ -55,6 +59,7 @@ const Login: React.FC = () => {
   };
 
   const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setErrorMsg("");
     setEmail(event.target.value);
   };
 
@@ -63,12 +68,14 @@ const Login: React.FC = () => {
   };
 
   const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setErrorMsg("");
     setPassword(event.target.value);
   };
 
   const handleConfirmPassword = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
+    setErrorMsg("");
     setHandleConfirmPassword(event.target.value);
   };
 
@@ -76,8 +83,9 @@ const Login: React.FC = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       handleRedirectHome();
+      setErrorMsg("");
     } catch (error) {
-      console.error("Error al iniciar sesión:");
+      setErrorMsg("El email o la contraseña son incorrectos");
     }
   };
 
@@ -86,11 +94,12 @@ const Login: React.FC = () => {
       if (password === confirmPassword) {
         await createUserWithEmailAndPassword(auth, email, password);
         handleRedirectHome();
+        setErrorMsg("");
       } else {
-        console.error("Las contraseñas no coinciden");
+        setErrorMsg("Las contraseñas noi coinciden");
       }
     } catch (error) {
-      console.error("Error al registrar usuario:");
+      setErrorMsg("Error al registrar al usuario, intentalo más tarde");
     }
   };
 
@@ -98,12 +107,10 @@ const Login: React.FC = () => {
     try {
       await sendPasswordResetEmail(auth, email);
       handleEmailLogin();
-      console.log(
-        "Se ha enviado un correo electrónico para restablecer la contraseña."
-      );
+      setErrorMsg("");
     } catch (error) {
-      console.error(
-        "Error al enviar el correo electrónico de restablecimiento de contraseña:"
+      setErrorMsg(
+        "Ocurrió un error al intentar enviar el email, por favor intentalo mas tarde."
       );
     }
   };
@@ -127,19 +134,19 @@ const Login: React.FC = () => {
                 placeholder={"Email"}
                 inputType={"text"}
               />
-              <div>
+              <div className="password-container">
                 <DefaultInput
                   inputValue={password}
                   handleChange={handlePassword}
                   placeholder={"Contraseña"}
                   inputType={"password"}
+                  errormsg={errormsg}
                 />
                 <span className="forget-password" onClick={hanldePasswordReset}>
                   Te olvidaste la contraseña?
                 </span>
               </div>
               <button
-                className="button"
                 onClick={handleSignInWithEmailAndPassword}
               >
                 Iniciar Sesión
@@ -153,17 +160,14 @@ const Login: React.FC = () => {
 
           {showPasswordReset && (
             <>
-              <div>
-                <DefaultInput
-                  inputValue={sendEmail}
-                  handleChange={handleSendEmail}
-                  placeholder={"Email para recuperar su contraseña"}
-                  inputType={"text"}
-                />
-                <div className="button-container">
-                  <button onClick={handleResetPassword}>Enviar Email</button>
-                </div>
-              </div>
+              <DefaultInput
+                inputValue={sendEmail}
+                handleChange={handleSendEmail}
+                placeholder={"Email para recuperar su contraseña"}
+                inputType={"text"}
+                errormsg={errormsg}
+              />
+              <button onClick={handleResetPassword}>Enviar Email</button>
               <button onClick={handleBack}>Volver atrás</button>
             </>
           )}
@@ -187,6 +191,7 @@ const Login: React.FC = () => {
                 handleChange={handleConfirmPassword}
                 placeholder={"Confirmar Contraseña"}
                 inputType={"password"}
+                errormsg={errormsg}
               />
               <button
                 className="button"
