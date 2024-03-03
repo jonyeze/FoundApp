@@ -4,8 +4,9 @@ import "./App.css";
 import Nav from "./components/Nav/Nav";
 import Home from "./Pages/Home/Home";
 import About from "./Pages/About/About";
-import Search from "./Pages/Search/Search";
+import Search from "./Pages/Search/searchComponent";
 import Login from "./Pages/Login/Login";
+import FoundItems from "./Pages/foundItems/FoundItems";
 
 const Main: React.FC = () => {
   const location = useLocation();
@@ -20,6 +21,7 @@ const Main: React.FC = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/FoundItems" element={<FoundItems/>} />
       </Routes>
     </div>
   );

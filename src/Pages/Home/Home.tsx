@@ -20,7 +20,9 @@ const Home: React.FC = () => {
           <h1 className="home-title">Encontraste algo?</h1>
           <div className="home-grid-container">
             <div className="home-button-column">
-              <button className="home-button">Encontré un objeto</button>
+              <Link to="/FoundItems">
+                <button className="home-button">Encontré un objeto</button>
+              </Link>
             </div>
           </div>
         </div>

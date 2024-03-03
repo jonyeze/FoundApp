@@ -1,0 +1,123 @@
+/* foundItems.css */
+
+.found-items-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.found-items-container h1 {
+  margin-bottom: 2rem;
+  color: #ffffff;
+}
+
+.found-items-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Alinea los elementos al centro */
+  width: 100%; /* Ocupa todo el ancho disponible */
+  max-width: 400px; /* Ajusta el ancho máximo según sea necesario */
+}
+
+.found-items-container form > div {
+  width: 100%; /* Asegura que los elementos ocupen todo el ancho del formulario */
+  margin-bottom: 1rem; /* Espacio entre cada campo */
+}
+
+.found-items-container label {
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.found-items-container select,
+.found-items-container input[type='text'],
+.found-items-container input[type='date'] {
+  border-radius: 10px;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  outline: none;
+}
+
+/* Estilo específico para el DatePicker */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+}
+
+.react-datepicker__input-container input {
+  border-radius: 10px;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  outline: none;
+}
+
+.found-items-container button {
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.found-items-container button:hover {
+  background-color: #0056b3;
+}
+
+.found-items-container input[type='date']::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+.input-field[type='number'] {
+  border-radius: 10px;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  outline: none;
+}
+
+.input-field[type='number']::-webkit-inner-spin-button,
+.input-field[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/* Estilo para los números del calendario del DatePicker */
+.react-datepicker__day {
+  color: #000000; /* Cambia el color del texto del calendario */
+  background-color: rgba(255, 255, 255, 0.8); /* Ajusta la opacidad del fondo del calendario */
+  border-radius: 50%; /* Redondea los cuadrados de los números */
+}
+
+/* Estilo para el mes y los días del calendario */
+.react-datepicker__current-month,
+.react-datepicker__day-name {
+  color: #ffffff  !important; /* Cambia el color del mes y los días a blanco */
+}
+
+/* Estilo para los números del calendario del DatePicker cuando se deshabilitan */
+.react-datepicker__day--disabled {
+  color: #ccc; /* Cambia el color del texto del calendario cuando se deshabilitan */
+}
+/* Estilo para ocultar los números que no pertenecen al mes actual */
+.react-datepicker__day--outside-month {
+  display: none; /* Oculta los números que no pertenecen al mes actual */
+}
+
