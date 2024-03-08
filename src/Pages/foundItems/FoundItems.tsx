@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import './foundItems.css';
-import CashForm from './cashForm/cashForm';
-import ClothingForm from './clothingForm/clothingForm';
-import DniForm from './dniForm/dniForm';
-import PhoneForm from './phoneForm/phoneForm';
+import React, { useState } from "react";
+import "./foundItems.css";
+import CashForm from "./cashForm/cashForm";
+import ClothingForm from "./clothingForm/clothingForm";
+import DniForm from "./dniForm/dniForm";
+import PhoneForm from "./phoneForm/phoneForm";
 
 const FoundItems: React.FC = () => {
-  const [selectedOption, setSelectedOption] = useState<string>('');
+  const [selectedOption, setSelectedOption] = useState<string>("");
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(event.target.value);
@@ -17,7 +17,7 @@ const FoundItems: React.FC = () => {
       <h1>elegi una de las opciones</h1>
       <form>
         <div>
-          <label htmlFor="select">Selecciona :  </label>
+          <label htmlFor="select">Selecciona : </label>
           <select
             id="select"
             value={selectedOption}
@@ -33,10 +33,10 @@ const FoundItems: React.FC = () => {
         </div>
       </form>
 
-      {selectedOption === 'dni' && <DniForm />}
-      {selectedOption === 'phone' && <PhoneForm />}
-      {selectedOption === 'cash' && <CashForm />}
-      {selectedOption === 'clothing' && <ClothingForm />}
+      {selectedOption === "dni" && <DniForm />}
+      {selectedOption === "phone" && <PhoneForm />}
+      {selectedOption === "cash" && <CashForm />}
+      {selectedOption === "clothing" && <ClothingForm />}
     </div>
   );
 };

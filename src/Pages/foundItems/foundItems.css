@@ -1,5 +1,3 @@
-/* foundItems.css */
-
 .found-items-container {
   display: flex;
   flex-direction: column;
@@ -14,14 +12,14 @@
 .found-items-container form {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Alinea los elementos al centro */
-  width: 100%; /* Ocupa todo el ancho disponible */
-  max-width: 400px; /* Ajusta el ancho máximo según sea necesario */
+  align-items: center; 
+  width: 100%; 
+  max-width: 400px; 
 }
 
 .found-items-container form > div {
-  width: 100%; /* Asegura que los elementos ocupen todo el ancho del formulario */
-  margin-bottom: 1rem; /* Espacio entre cada campo */
+  width: 100%; 
+  margin-bottom: 1rem; 
 }
 
 .found-items-container label {
@@ -101,23 +99,71 @@
 
 /* Estilo para los números del calendario del DatePicker */
 .react-datepicker__day {
-  color: #000000; /* Cambia el color del texto del calendario */
-  background-color: rgba(255, 255, 255, 0.8); /* Ajusta la opacidad del fondo del calendario */
-  border-radius: 50%; /* Redondea los cuadrados de los números */
+  color: #000000; 
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%; 
 }
 
 /* Estilo para el mes y los días del calendario */
 .react-datepicker__current-month,
 .react-datepicker__day-name {
-  color: #ffffff  !important; /* Cambia el color del mes y los días a blanco */
+  color: #ffffff  !important;
 }
 
 /* Estilo para los números del calendario del DatePicker cuando se deshabilitan */
 .react-datepicker__day--disabled {
-  color: #ccc; /* Cambia el color del texto del calendario cuando se deshabilitan */
+  color: #ccc;
 }
 /* Estilo para ocultar los números que no pertenecen al mes actual */
 .react-datepicker__day--outside-month {
-  display: none; /* Oculta los números que no pertenecen al mes actual */
+  display: none;
 }
+
+
+
+
+
+
+/*---------------------------------------------------------------------------*/
+/*Css de showConfirmation la confirmacion del formulario de los inputs*/
+.submitted-data {
+  background-color: #e0e0e0; 
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center; 
+  color: #007bff;
+}
+
+.data {
+  background-color: #e0e0e0;
+}
+
+.label {
+  color: #000000; 
+  background-color: #e9e9e9c4; 
+  border-radius: 5px; 
+  margin-top: 1rem;
+}
+
+.value {
+  color: #000000; 
+   padding: 0.5rem;
+  background-color: #dfdfdf;
+  text-decoration: underline;
+}
+
+/*Mensaje de datos enviados con exito*/
+.success-message {
+  background-color: #4caf50; 
+  width: 30rem;
+  color: #ffffff; 
+  border-radius: 5px; 
+  padding: 10px; 
+  margin-top: 10px;
+  text-align: center; 
+}
+
+
+
+
 

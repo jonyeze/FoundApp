@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { initializeApp } from 'firebase/app';
@@ -16,6 +16,9 @@ const ClothingForm: React.FC = () => {
     map: '',
   });
 
+  const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
+  const [successMessage, setSuccessMessage] = useState<string>('');
+
   const handleInputChange = (key: string, value: string | Date | null) => {
     setInputs((prevInputs) => ({
       ...prevInputs,
@@ -25,69 +28,118 @@ const ClothingForm: React.FC = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('Datos ingresados:', inputs);
+    setShowConfirmation(true);
+  };
 
+  const handleSave = async () => {
     try {
       const docRef = await addDoc(collection(firestore, 'Clothing'), inputs);
       console.log('Document written with ID: ', docRef.id);
+      setInputs({
+        brand: '',
+        date: new Date(),
+        description: '',
+        map: '',
+      }); // Limpiar los campos después de guardar
+      setShowConfirmation(false);
+      setSuccessMessage('¡Los datos se guardaron exitosamente!');
     } catch (error) {
       console.error('Error adding document: ', error);
     }
+  };
 
+  const handleDelete = () => {
     setInputs({
       brand: '',
       date: new Date(),
       description: '',
       map: '',
     });
+    setShowConfirmation(false);
   };
+
+  useEffect(() => {
+    if (successMessage) {
+      const timer = setTimeout(() => {
+        setSuccessMessage('');
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [successMessage]);
 
   return (
     <div className="found-items-container">
-      <h1>Ingresa los datos de Clothing</h1>
-      <form onSubmit={handleSubmit}>
-        {/* Inputs de Clothing */}
-        <div>
-          <label htmlFor="brand">Marca:</label>
-          <input
-            type="text"
-            id="brand"
-            value={inputs.brand}
-            onChange={(e) => handleInputChange('brand', e.target.value)}
-            required
-          />
+      {showConfirmation ? (
+        <div className="submitted-data">
+          <h2 className="data">Prenda de ropa a agregar</h2>
+          <div className="data">
+            <div className="label">Marca:</div>
+            <div className="value">{inputs.brand}</div>
+          </div>
+          <div className="data">
+            <div className="label">Fecha:</div>
+            <div className="value">{inputs.date.toLocaleDateString()}</div>
+          </div>
+          <div className="data">
+            <div className="label">Descripción:</div>
+            <div className="value">{inputs.description}</div>
+          </div>
+          <div className="data">
+            <div className="label">Mapa:</div>
+            <div className="value">{inputs.map}</div>
+          </div>
+          <div className="data">
+            <button onClick={handleDelete}>Eliminar datos</button>
+            <button onClick={handleSave}>Guardar datos</button>
+          </div>
         </div>
-        <div>
-          <label htmlFor="date">Fecha:</label>
-          <DatePicker
-            id="date"
-            selected={inputs.date}
-            onChange={(date: Date | null) => handleInputChange('date', date)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="description">Descripcion:</label>
-          <input
-            type="text"
-            id="description"
-            value={inputs.description}
-            onChange={(e) => handleInputChange('description', e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="location">Mapa:</label>
-          <input
-            type="text"
-            id="location"
-            value={inputs.map}
-            onChange={(e) => handleInputChange('map', e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="brand">Marca:</label>
+            <input
+              type="text"
+              id="brand"
+              value={inputs.brand}
+              onChange={(e) => handleInputChange('brand', e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="date">Fecha:</label>
+            <DatePicker
+              id="date"
+              selected={inputs.date}
+              onChange={(date: Date | null) => handleInputChange('date', date)}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="description">Descripción:</label>
+            <input
+              type="text"
+              id="description"
+              value={inputs.description}
+              onChange={(e) => handleInputChange('description', e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="map">Mapa:</label>
+            <input
+              type="text"
+              id="map"
+              value={inputs.map}
+              onChange={(e) => handleInputChange('map', e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit">Agregar</button>
+        </form>
+      )}
+      {successMessage && (
+        <div className="success-message">{successMessage}</div>
+      )}
     </div>
   );
 };
