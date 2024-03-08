@@ -41,7 +41,7 @@ img {
   max-width: 300px;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   margin-bottom: 3rem;
 }
 

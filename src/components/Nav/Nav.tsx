@@ -45,11 +45,12 @@ const Nav: React.FC = () => {
         onClick={handleRedirectHome}
       />
       <div className={`menu ${showMenu ? "active" : ""}`}>
-      <User />
+      
         <a href="/About" onClick={closeMenu} className="nav-link">
           Nosotros
         </a>
         <LogoutButton />
+        <User />
       </div>
       <div className="menu-toggle" onClick={toggleMenu}>
         <div className={`bar ${showMenu ? "open" : ""}`} />
