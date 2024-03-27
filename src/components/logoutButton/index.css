@@ -1,4 +1,8 @@
 .logOut-button {
+   display: block;
    cursor: pointer;
-    
+   background-color: #ffffff;
+}
+.logOut-button:hover{
+   background-color: #ebebeb;
 }

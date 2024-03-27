@@ -1,28 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
-import firebaseConfig from '../../../firebase/firebaseConfig';
+import React, { useState, useEffect, useContext } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import firebaseConfig from "../../../firebase/firebaseConfig";
+import { AuthContext } from "../../../context/authContext";
 
 const app = initializeApp(firebaseConfig);
 const firestore = getFirestore(app);
 
+interface ClothingFromData {
+  brand: string;
+  date: Date;
+  description: string;
+  map: string;
+}
+
 const ClothingForm: React.FC = () => {
-  const [inputs, setInputs] = useState({
-    brand: '',
+  const [inputs, setInputs] = useState<ClothingFromData>({
+    brand: "",
     date: new Date(),
-    description: '',
-    map: '',
+    description: "",
+    map: "",
   });
 
   const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
-  const [successMessage, setSuccessMessage] = useState<string>('');
+  const [successMessage, setSuccessMessage] = useState<string>("");
+
+  const authContext = useContext(AuthContext);
+  const currentUser = authContext?.currentUser;
 
   const handleInputChange = (key: string, value: string | Date | null) => {
     setInputs((prevInputs) => ({
       ...prevInputs,
-      [key]: value instanceof Date ? value : (value === null ? '' : value.toString()),
+      [key]:
+        value instanceof Date ? value : value === null ? "" : value.toString(),
     }));
   };
 
@@ -33,27 +45,35 @@ const ClothingForm: React.FC = () => {
 
   const handleSave = async () => {
     try {
-      const docRef = await addDoc(collection(firestore, 'Clothing'), inputs);
-      console.log('Document written with ID: ', docRef.id);
-      setInputs({
-        brand: '',
-        date: new Date(),
-        description: '',
-        map: '',
-      }); // Limpiar los campos después de guardar
-      setShowConfirmation(false);
-      setSuccessMessage('¡Los datos se guardaron exitosamente!');
+      if (currentUser) {
+        const dataWithUid = { ...inputs, uid: currentUser.uid };
+        const docRef = await addDoc(
+          collection(firestore, "Clothing"),
+          dataWithUid
+        );
+        console.log("Document written with ID: ", docRef.id);
+        setInputs({
+          brand: "",
+          date: new Date(),
+          description: "",
+          map: "",
+        });
+        setShowConfirmation(false);
+        setSuccessMessage("¡Los datos se guardaron correctamente!");
+      } else {
+        console.error("No se pudo obtener el usuario actual.");
+      }
     } catch (error) {
-      console.error('Error adding document: ', error);
+      console.error("Error adding document: ", error);
     }
   };
 
   const handleDelete = () => {
     setInputs({
-      brand: '',
+      brand: "",
       date: new Date(),
-      description: '',
-      map: '',
+      description: "",
+      map: "",
     });
     setShowConfirmation(false);
   };
@@ -61,7 +81,7 @@ const ClothingForm: React.FC = () => {
   useEffect(() => {
     if (successMessage) {
       const timer = setTimeout(() => {
-        setSuccessMessage('');
+        setSuccessMessage("");
       }, 5000);
       return () => clearTimeout(timer);
     }
@@ -101,7 +121,7 @@ const ClothingForm: React.FC = () => {
               type="text"
               id="brand"
               value={inputs.brand}
-              onChange={(e) => handleInputChange('brand', e.target.value)}
+              onChange={(e) => handleInputChange("brand", e.target.value)}
               required
             />
           </div>
@@ -110,7 +130,7 @@ const ClothingForm: React.FC = () => {
             <DatePicker
               id="date"
               selected={inputs.date}
-              onChange={(date: Date | null) => handleInputChange('date', date)}
+              onChange={(date: Date | null) => handleInputChange("date", date)}
               required
             />
           </div>
@@ -120,7 +140,7 @@ const ClothingForm: React.FC = () => {
               type="text"
               id="description"
               value={inputs.description}
-              onChange={(e) => handleInputChange('description', e.target.value)}
+              onChange={(e) => handleInputChange("description", e.target.value)}
               required
             />
           </div>
@@ -130,7 +150,7 @@ const ClothingForm: React.FC = () => {
               type="text"
               id="map"
               value={inputs.map}
-              onChange={(e) => handleInputChange('map', e.target.value)}
+              onChange={(e) => handleInputChange("map", e.target.value)}
               required
             />
           </div>

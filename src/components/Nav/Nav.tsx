@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import "./Nav.css";
 import Logo from "../../Assets/Img/Fobj.png";
 import { useNavigate } from "react-router-dom";
-import LogoutButton from "../logoutButton";
 import User from "../User";
 
 const Nav: React.FC = () => {
@@ -49,7 +48,7 @@ const Nav: React.FC = () => {
         <a href="/About" onClick={closeMenu} className="nav-link">
           Nosotros
         </a>
-        <LogoutButton />
+        
         <User />
       </div>
       <div className="menu-toggle" onClick={toggleMenu}>

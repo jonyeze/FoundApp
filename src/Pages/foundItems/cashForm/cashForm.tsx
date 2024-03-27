@@ -1,15 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import firebaseConfig from "../../../firebase/firebaseConfig";
+import { AuthContext } from "../../../context/authContext";
 
 const app = initializeApp(firebaseConfig);
 const firestore = getFirestore(app);
 
+interface CashFormData {
+  amount: string;
+  date: Date;
+  locationAmount: string;
+  location: string;
+}
+
 const CashForm: React.FC = () => {
-  const [inputs, setInputs] = useState({
+  const [inputs, setInputs] = useState<CashFormData>({
     amount: "",
     date: new Date(),
     locationAmount: "",
@@ -18,6 +26,8 @@ const CashForm: React.FC = () => {
 
   const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
   const [successMessage, setSuccessMessage] = useState<string>("");
+  const authContext = useContext(AuthContext);
+  const currentUser = authContext?.currentUser;
 
   const handleInputChange = (key: string, value: string | Date | null) => {
     setInputs((prevInputs) => ({
@@ -34,16 +44,28 @@ const CashForm: React.FC = () => {
 
   const handleSave = async () => {
     try {
-      const docRef = await addDoc(collection(firestore, "Cash"), inputs);
-      console.log("Document written with ID: ", docRef.id);
-      setSuccessMessage("¡Los datos se guardaron exitosamente!");
-      setInputs({
-        amount: "",
-        date: new Date(),
-        locationAmount: "",
-        location: "",
-      }); // Limpiar los campos después de guardar
-      setShowConfirmation(false);
+      if (currentUser) {
+        const dataWithUid = { ...inputs, uid: currentUser.uid };
+
+        const docRef = await addDoc(
+          collection(firestore, "Cash"),
+          dataWithUid
+        );
+
+        console.log("Document written with ID: ", docRef.id);
+
+        setInputs({
+          amount: "",
+          date: new Date(),
+          locationAmount: "",
+          location: "",
+        });
+
+        setShowConfirmation(false);
+        setSuccessMessage("¡Los datos se guardaron correctamente!");
+      } else {
+        console.error("No se pudo obtener el usuario actual.");
+      }
     } catch (error) {
       console.error("Error adding document: ", error);
     }
@@ -60,11 +82,11 @@ const CashForm: React.FC = () => {
   };
 
   useEffect(() => {
-      if (successMessage) {
+    if (successMessage) {
       const timer = setTimeout(() => {
-      setSuccessMessage('');
-    }, 5000);
-    return () => clearTimeout(timer);
+        setSuccessMessage("");
+      }, 5000);
+      return () => clearTimeout(timer);
     }
   }, [successMessage]);
 
@@ -72,7 +94,7 @@ const CashForm: React.FC = () => {
     <div className="found-items-container">
       {showConfirmation ? (
         <div className="submitted-data">
-          <h2 className="data">Datos de Cash a agregar</h2>
+          <h2 className="data">Datos de Dinero a agregar</h2>
           <div className="data">
             <div className="label">Monto:</div>
             <div className="value">{inputs.amount}</div>

@@ -1,60 +1,82 @@
-import React, { useState, useEffect } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
-import firebaseConfig from '../../../firebase/firebaseConfig';
+import React, { useState, useEffect, useContext } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import firebaseConfig from "../../../firebase/firebaseConfig";
+import { AuthContext } from "../../../context/authContext";
 
 const app = initializeApp(firebaseConfig);
 const firestore = getFirestore(app);
 
+interface PhoneFormData {
+  model: string;
+  color: string;
+  date: Date;
+  information: string;
+  location: string;
+  map: string;
+}
+
 const PhoneForm: React.FC = () => {
-  const [inputs, setInputs] = useState({
-    model: '',
-    color: '',
+  const [inputs, setInputs] = useState<PhoneFormData>({
+    model: "",
+    color: "",
     date: new Date(),
-    information: '',
-    location: '',
-    map: '',
+    information: "",
+    location: "",
+    map: "",
   });
 
   const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
-  const [successMessage, setSuccessMessage] = useState<string>('');
+  const [successMessage, setSuccessMessage] = useState<string>("");
+
+  const authContext = useContext(AuthContext);
+  const currentUser = authContext?.currentUser;
 
   const handleInputChange = (key: string, value: string | Date | null) => {
     setInputs((prevInputs) => ({
       ...prevInputs,
-      [key]: value instanceof Date ? value : (value === null ? '' : value.toString()),
+      [key]:
+        value instanceof Date ? value : value === null ? "" : value.toString(),
     }));
   };
 
   const handleSave = async () => {
     try {
-      const docRef = await addDoc(collection(firestore, 'Phone'), inputs);
-      console.log('Document written with ID: ', docRef.id);
-      setInputs({
-        model: '',
-        color: '',
-        date: new Date(),
-        information: '',
-        location: '',
-        map: '',
-      }); // Limpiar los campos después de guardar
-      setShowConfirmation(false);
-      setSuccessMessage('¡Los datos se guardaron correctamente!');
+      if (currentUser) {
+        const dataWithUid = { ...inputs, uid: currentUser.uid };
+        const docRef = await addDoc(
+          collection(firestore, "Phone"),
+          dataWithUid
+        );
+        console.log("Document written with ID: ", docRef.id);
+        setInputs({
+          model: "",
+          color: "",
+          date: new Date(),
+          information: "",
+          location: "",
+          map: "",
+        });
+        setShowConfirmation(false);
+        setSuccessMessage("¡Los datos se guardaron correctamente!");
+      } else {
+        console.error("No se pudo obtener el usuario actual.");
+      }
     } catch (error) {
-      console.error('Error adding document: ', error);
+      console.error("Error adding document: ", error);
     }
   };
 
   const handleDelete = () => {
     setInputs({
-      model: '',
-      color: '',
+      model: "",
+      color: "",
       date: new Date(),
-      information: '',
-      location: '',
-      map: '',
+      information: "",
+      location: "",
+      map: "",
     });
     setShowConfirmation(false);
   };
@@ -67,7 +89,7 @@ const PhoneForm: React.FC = () => {
   useEffect(() => {
     if (successMessage) {
       const timer = setTimeout(() => {
-        setSuccessMessage('');
+        setSuccessMessage("");
       }, 5000);
       return () => clearTimeout(timer);
     }
@@ -77,7 +99,7 @@ const PhoneForm: React.FC = () => {
     <div className="found-items-container">
       {showConfirmation ? (
         <div className="submitted-data">
-          <h2 className="data">Documento a agregar</h2>
+          <h2 className="data">Celular a agregar</h2>
           <div className="data">
             <div className="label">Modelo:</div>
             <div className="value">{inputs.model}</div>
@@ -115,7 +137,7 @@ const PhoneForm: React.FC = () => {
               type="text"
               id="model"
               value={inputs.model}
-              onChange={(e) => handleInputChange('model', e.target.value)}
+              onChange={(e) => handleInputChange("model", e.target.value)}
               required
             />
           </div>
@@ -125,7 +147,7 @@ const PhoneForm: React.FC = () => {
               type="text"
               id="color"
               value={inputs.color}
-              onChange={(e) => handleInputChange('color', e.target.value)}
+              onChange={(e) => handleInputChange("color", e.target.value)}
               required
             />
           </div>
@@ -134,7 +156,7 @@ const PhoneForm: React.FC = () => {
             <DatePicker
               id="date"
               selected={inputs.date}
-              onChange={(date: Date | null) => handleInputChange('date', date)}
+              onChange={(date: Date | null) => handleInputChange("date", date)}
               required
             />
           </div>
@@ -144,7 +166,7 @@ const PhoneForm: React.FC = () => {
               type="text"
               id="information"
               value={inputs.information}
-              onChange={(e) => handleInputChange('information', e.target.value)}
+              onChange={(e) => handleInputChange("information", e.target.value)}
               required
             />
           </div>
@@ -154,7 +176,7 @@ const PhoneForm: React.FC = () => {
               type="text"
               id="location"
               value={inputs.location}
-              onChange={(e) => handleInputChange('location', e.target.value)}
+              onChange={(e) => handleInputChange("location", e.target.value)}
               required
             />
           </div>
@@ -164,7 +186,7 @@ const PhoneForm: React.FC = () => {
               type="text"
               id="map"
               value={inputs.map}
-              onChange={(e) => handleInputChange('map', e.target.value)}
+              onChange={(e) => handleInputChange("map", e.target.value)}
               required
             />
           </div>

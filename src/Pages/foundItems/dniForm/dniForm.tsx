@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import firebaseConfig from '../../../firebase/firebaseConfig';
+import { AuthContext } from '../../../context/authContext';
 
 const app = initializeApp(firebaseConfig);
 const firestore = getFirestore(app);
@@ -28,6 +29,9 @@ const DniForm: React.FC = () => {
   const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
   const [successMessage, setSuccessMessage] = useState<string>('');
 
+  const authContext = useContext(AuthContext);
+  const currentUser = authContext?.currentUser;
+
   const handleInputChange = (
     key: string,
     value: string | Date | number | null
@@ -45,17 +49,29 @@ const DniForm: React.FC = () => {
 
   const handleSave = async () => {
     try {
-      const docRef = await addDoc(collection(firestore, 'Dni'), inputs);
-      console.log('Document written with ID: ', docRef.id);
-      setInputs({
-        address: '',
-        datebirth: new Date(),
-        documentNumber: null,
-        map: '',
-        name: '',
-      }); // Limpiar los campos después de guardar
-      setShowConfirmation(false);
-      setSuccessMessage('¡Los datos se guardaron correctamente!');
+      if (currentUser) {
+        // Agregar el UID del usuario actual a los datos antes de guardarlos
+        const dataWithUid = { ...inputs, uid: currentUser.uid };
+        
+        // Guardar los datos en la colección "Dni"
+        const docRef = await addDoc(collection(firestore, 'Dni'), dataWithUid);
+        
+        console.log('Document written with ID: ', docRef.id);
+        
+        // Limpiar los campos después de guardar
+        setInputs({
+          address: '',
+          datebirth: new Date(),
+          documentNumber: null,
+          map: '',
+          name: '',
+        });
+        
+        setShowConfirmation(false);
+        setSuccessMessage('¡Los datos se guardaron correctamente!');
+      } else {
+        console.error('No se pudo obtener el usuario actual.');
+      }
     } catch (error) {
       console.error('Error adding document: ', error);
     }
